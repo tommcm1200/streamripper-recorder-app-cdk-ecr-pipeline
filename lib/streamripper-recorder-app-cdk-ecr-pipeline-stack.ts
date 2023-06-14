@@ -29,7 +29,6 @@ export class StreamripperRecorderAppCdkEcrPipelineStack extends Stack {
         buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
         privileged: true,
         environmentVariables: {
-          // ECR_REPOSITORY_URI: { value: repository.repositoryUri },
           AWS_DEFAULT_REGION: { value: this.region },
           AWS_ACCOUNT_ID: { value: this.account },
           IMAGE_TAG: { value: 'LATEST' },
@@ -48,9 +47,6 @@ export class StreamripperRecorderAppCdkEcrPipelineStack extends Stack {
           },
           build: {
             commands: [
-              // Add your build commands here
-              // 'docker build -t $ECR_REPOSITORY_URI:latest .',
-              // 'docker push $ECR_REPOSITORY_URI:latest'
               'echo Build started on `date`',
               'echo Building the Docker image...',          
               'docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .',
